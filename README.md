@@ -5,7 +5,7 @@ Building a simple task management application. The application will allow users 
 Users need to sign up or login using their credentials to see the tasks.
 Users can sort the tasks.
 
-## Hosted Frontend Assignment Link: 
+## Hosted Frontend Assignment Link: https://pesto-task-37b62.web.app/
 
 ## Development server
 Run `npm install` to install all the dependencies.
