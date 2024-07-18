@@ -1,0 +1,15 @@
+<app-header></app-header>
+<main [class.main]="isAuthenticated">
+    @if (isAuthenticated) {
+    <ul id="users">
+        @for (user of users; track user.id) {
+        <li>
+            <app-user [user]="user"></app-user>
+        </li>
+        }
+    </ul>
+    }
+    <div>
+        <router-outlet />
+    </div>
+</main>

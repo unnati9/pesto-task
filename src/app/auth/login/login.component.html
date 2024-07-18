@@ -1,0 +1,24 @@
+<div class="auth-form">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+        <p>
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" #email="ngModel" ngModel required email />
+            @if (email.touched && !email.valid) {
+        <p class="control-error">Invalid or missing email</p>
+        }
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" #password="ngModel" required ngModel />
+            @if (password.touched && password.hasError('required')) {
+        <p class="control-error">Password cannot be empty</p>
+        }
+        </p>
+
+        <p class="actions">
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </p>
+    </form>
+</div>

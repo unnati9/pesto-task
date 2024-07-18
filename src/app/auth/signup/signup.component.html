@@ -1,0 +1,54 @@
+<div class="auth-form">
+    <h2>Sign Up</h2>
+    <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+        <p>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" #firstName="ngModel" required ngModel />
+            @if (firstName.touched && firstName.hasError('required')) {
+        <p class="control-error">Please enter your first name!</p>
+        }
+        </p>
+        <p>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" #lastName="ngModel" required ngModel />
+            @if (lastName.touched && lastName.hasError('required')) {
+        <p class="control-error">Please enter your last name!</p>
+        }
+        </p>
+        <p>
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" #email="ngModel" ngModel required email />
+            @if (email.touched && email.hasError('required')) {
+        <p class="control-error">Email cannot be empty.</p>
+        } @else if (email.touched && email.invalid) {
+        <p class="control-error">Invalid email.</p>
+        }
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" minlength="6" name="password" #password="ngModel" required ngModel />
+            @if (password.touched && password.invalid) {
+        <p class="control-error">Password cannot be less than 6 characters.</p>
+        }
+        </p>
+        <p>
+            <label class="image-upload-container">
+                <span>Select Avatar</span>
+                <div class="preview">
+                    @if (!selectedImage) {
+                    <p>No image picked yet.</p>
+                    } @else {
+                    <img [src]="selectedImage" alt="Avatar">
+                    }
+                </div>
+                <input #userAvatar="ngModel" type="file" name="userAvatar" ngModel accept="image/*"
+                    (change)="handleImageChange($event)">
+            </label>
+        </p>
+
+        <p class="actions">
+            <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+        </p>
+    </form>
+</div>

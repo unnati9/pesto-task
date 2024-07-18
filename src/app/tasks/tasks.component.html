@@ -1,0 +1,23 @@
+<div class="query">
+    @if (tasks().length > 1) {
+        <p>
+            <a routerLink="./" [queryParams]="{order: order() === 'asc' ? 'desc' : 'asc'}">Sort {{order() === 'asc' ?
+                'Descending' : 'Ascending'}}</a>
+        </p>
+    }
+    <p>
+        <select [value]="selectedFilter()" (change)="onChangeTasksFilter(filter.value)" #filter>
+            <option value="all">All</option>
+            @for (option of taskStatusOptions; track option.value) {
+                <option [value]="option.value">{{ option.text }}</option>
+            }
+        </select>
+    </p>
+</div>
+<ul>
+    @for (task of tasks(); track task.id) {
+        <li>
+            <app-task [task]="task"></app-task>
+        </li>
+    }
+</ul>

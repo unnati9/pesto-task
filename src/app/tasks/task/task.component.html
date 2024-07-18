@@ -1,0 +1,20 @@
+<app-card>
+  <article>
+    <div class="task">
+      <h2>{{ task().title }}</h2>
+      <button class="delete" (click)="onDeleteTask()"><span class="icon">⨉</span></button>
+    </div>
+    <time>{{ task().dueDate | date: 'fullDate' }}</time>
+    <p>{{ task().summary }}</p>
+    <div class="actions">
+      <select #status>
+        @for (option of taskStatusOptions; track option.value) {
+        <option [value]="option.value" [selected]="task().status === option.taskStatus">
+          {{ option.text }}
+        </option>
+        }
+      </select>
+      <button (click)="onChangeTaskStatus(status.value)">Change Status</button>
+    </div>
+  </article>
+</app-card>

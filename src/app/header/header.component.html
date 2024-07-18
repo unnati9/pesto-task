@@ -1,0 +1,32 @@
+<header>
+  <div id="logo">
+    <img src="assets/task-management-logo.png" alt="task">
+  </div>
+
+  <nav>
+    <ul>
+      @if (isAuthenticated) {
+      <li>
+        <a routerLink="/" routerLinkActive="selected">Tasks</a>
+      </li>
+      <li>
+        <button (click)="onLogout()">
+          <span>
+            Logout
+          </span>
+          <span class="icon">
+            →
+          </span>
+        </button>
+      </li>
+      } @else {
+      <li>
+        <a routerLink="/login" routerLinkActive="selected">Login</a>
+      </li>
+      <li>
+        <a routerLink="/signup" routerLinkActive="selected">Sign Up</a>
+      </li>
+      }
+    </ul>
+  </nav>
+</header>
