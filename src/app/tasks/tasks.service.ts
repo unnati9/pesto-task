@@ -6,7 +6,7 @@ import { map, Subject, tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class TasksService {
   private tasks: Task[] = [];
-  taskChanged = new Subject<Task[]>();
+  public  taskChanged = new Subject<Task[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -17,14 +17,12 @@ export class TasksService {
       )
       .pipe(
         tap((tasks) => {
-          console.log(tasks);
           if (tasks == null) {
             this.tasks = [];
           } else {
             this.tasks = tasks;
           }
           this.taskChanged.next(this.tasks.slice());
-          console.log(this.tasks);
         })
       );
   }
@@ -45,8 +43,9 @@ export class TasksService {
     this.saveTasks();
   }
 
-  addTask(task: Task) {
-    this.tasks.unshift(task);
+  addTask(newTask: Task) {
+    const currentUserTasksLength = this.tasks.filter(task => task.userId === newTask.userId).length + 1
+    this.tasks.unshift({...newTask, id: currentUserTasksLength.toString()});
     this.saveTasks();
   }
 

@@ -11,13 +11,14 @@ import { UIService } from '../../shared/ui/ui.service';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css',
+  styleUrls: ['./signup.component.css', '../../tasks/new-task/new-task.component.css'],
 })
 export class SignupComponent {
   private authService = inject(AuthService);
   private uiService = inject(UIService);
   private router = inject(Router);
-  selectedImage = '';
+  
+  public selectedImage = '';
 
   handleImageChange(event: any) {
     const file = event.target.files[0];
@@ -35,7 +36,7 @@ export class SignupComponent {
     if (!form.valid) {
       return;
     }
-    console.log(form);
+
     let authObservable: Observable<AuthResponseData>;
     authObservable = this.authService.signUp(
       form.value.email,

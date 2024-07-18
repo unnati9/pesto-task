@@ -47,7 +47,6 @@ textarea {
   gap: 0.5rem;
   color: rgb(255, 255, 255);
   height: 0.5rem;
-  /* padding: 0.25rem 0 0 0; */
   height: 1rem;
   margin-bottom: 1rem;
   font-size: 0.7rem;
@@ -88,6 +87,12 @@ button[type="submit"]:hover,
 button[type="submit"]:active {
   background-color: #895cce;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+button[disabled]:hover,
+button[disabled]:active {
+  background-color: #9c73ca;
+  cursor: auto;
 }
 
 @media (min-width: 768px) {

@@ -4,14 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { DUMMY_USERS } from './dummy-users';
-import { UsersComponent } from './users/users.component';
 import { User } from './users/user/user.model';
 import { UserComponent } from './users/user/user.component';
 import { AuthService } from './auth/auth.service';
 import { Subscription } from 'rxjs';
 
-// This decorator converts the AppComponent class to a component
-// This @Component decorators takes an object which is the metadata for the component
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,25 +16,19 @@ import { Subscription } from 'rxjs';
     RouterOutlet,
     HeaderComponent,
     UserComponent,
-    TasksComponent,
-    UsersComponent,
+    TasksComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'easy-task';
+  title = 'pesto-task';
+
+  private authService = inject(AuthService);
+  private userSubscription?: Subscription;
 
   public users: Array<User> = DUMMY_USERS;
-  public selectedUser?: User;
-  public isNewTaskPopup: boolean = false;
-  private authService = inject(AuthService);
-  isAuthenticated: boolean = false;
-  userSubscription?: Subscription;
-
-  onUserClick(id: string) {
-    this.selectedUser = this.users.find((user) => user.id === id);
-  }
+  public isAuthenticated: boolean = false;
 
   ngOnInit(): void {
     this.authService.autoLogin();

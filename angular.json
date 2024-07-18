@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "easy-task": {
+    "pesto-task": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/easy-task",
+            "outputPath": "dist/pesto-task",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -58,10 +58,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "easy-task:build:production"
+              "buildTarget": "pesto-task:build:production"
             },
             "development": {
-              "buildTarget": "easy-task:build:development"
+              "buildTarget": "pesto-task:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -69,7 +69,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "easy-task:build"
+            "buildTarget": "pesto-task:build"
           }
         },
         "test": {

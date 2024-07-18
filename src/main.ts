@@ -14,7 +14,7 @@ bootstrapApplication(AppComponent, appConfig)
 // platformBrowserDynamic().bootstrapModule(AppModule);
 
 // This is the first file which is executed in the browser.
-// It executes the function bootstrapApplication which takes a component and looks for it int the index.html
+// It executes the function bootstrapApplication which takes a component and looks for it in the index.html
 // After which it tries replacing the custom element present in the index.html with the markup of that component
 
 // Here the AppComponent is passed which has the selector app-root 

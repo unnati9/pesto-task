@@ -51,12 +51,6 @@ a:active {
 }
 
 menu {
-    /* display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%; */
     margin: 0;
     padding: 0;
 }
@@ -84,8 +78,6 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    /* max-height: 50vh; */
-    /* overflow: auto; */
 }
 
 @media (min-width: 768px) {

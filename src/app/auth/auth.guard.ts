@@ -12,6 +12,7 @@ import { AuthService } from './auth.service';
 @Injectable({ providedIn: 'root' })
 class AuthGuardService {
   constructor(private authService: AuthService, private router: Router) {}
+  
   canActivate() {
     return this.authService.user.pipe(
       take(1),

@@ -11,17 +11,18 @@ import { UIService } from '../../shared/ui/ui.service';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css', '../../tasks/new-task/new-task.component.css'],
 })
 export class LoginComponent {
   private authService = inject(AuthService);
   private uiService = inject(UIService);
   private router = inject(Router);
+  
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
     }
-    console.log(form);
+
     let authObservable: Observable<AuthResponseData>;
     authObservable = this.authService.login(
       form.value.email,

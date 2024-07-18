@@ -19,7 +19,6 @@ export class TaskComponent {
   public taskStatusOptions = TaskStatusOptions;
 
   onChangeTaskStatus(status: string) {
-    // this.tasksService.removeTask(this.task().id);
     const newStatus = this.taskStatusOptions.find(
       (task) => task.value == status
     );

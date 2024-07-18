@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,11 +12,10 @@ import { TasksService } from '../tasks.service';
   styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
-  userId = input.required<string>();
-  closeNewTaskPopup = output<void>();
-
   private tasksService = inject(TasksService);
   private router = inject(Router);
+
+  public userId = input.required<string>();
 
   onCancel() {
     this.router.navigate(['/users', this.userId(), 'tasks']);
@@ -24,7 +23,7 @@ export class NewTaskComponent {
 
   onCreateTask(formData: NgForm) {
     this.tasksService.addTask({
-      id: formData.form.value.title + this.userId(),
+      id: '',
       title: formData.form.value.title,
       dueDate: formData.form.value.dueDate,
       summary: formData.form.value.summary,

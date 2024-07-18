@@ -5,7 +5,6 @@ import {
   input,
   OnChanges,
   OnInit,
-  output,
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -24,13 +23,12 @@ import { TaskComponent } from './task/task.component';
 })
 export class TasksComponent implements OnInit, OnChanges {
   private tasksService = inject(TasksService);
+  
   public selectedFilter = signal<string>('all');
-  taskStatusOptions = TaskStatusOptions;
-  userId = input.required<string>();
-  order = input<'asc' | 'desc'>();
-  addTask = output<string>();
-  isNewTaskPopup: boolean = false;
-  tasks = computed<Task[]>(() => {
+  public taskStatusOptions = TaskStatusOptions;
+  public userId = input.required<string>();
+  public order = input<'asc' | 'desc'>();
+  public tasks = computed<Task[]>(() => {
     switch (this.selectedFilter()) {
       case 'open':
         return this.tasksService
@@ -77,10 +75,8 @@ export class TasksComponent implements OnInit, OnChanges {
   });
 
   ngOnInit(): void {
-    // this.selectedFilter.set('all');
     this.tasksService.taskChanged.subscribe((tasks) => {
       this.tasks = computed(() => {
-        // return tasks.filter(task => task.userId === this.userId())
         switch (this.selectedFilter()) {
           case 'open':
             return tasks
@@ -132,14 +128,6 @@ export class TasksComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.selectedFilter.set('all');
-  }
-
-  onAddTask() {
-    this.isNewTaskPopup = true;
-  }
-
-  onCancelPopup() {
-    this.isNewTaskPopup = false;
   }
 
   onChangeTasksFilter(filter: string) {

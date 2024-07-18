@@ -13,8 +13,9 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private authService = inject(AuthService);
-  isAuthenticated: boolean = false;
-  userSubscription?: Subscription;
+  private userSubscription?: Subscription;
+
+  public isAuthenticated: boolean = false;
 
   ngOnInit(): void {
     this.userSubscription = this.authService.user.subscribe((user) => {

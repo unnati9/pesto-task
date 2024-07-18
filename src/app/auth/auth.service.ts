@@ -122,7 +122,6 @@ export class AuthService {
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
-    // this.tasksService.fetchTasks().subscribe();
   }
 
   private handleError(errorRes: HttpErrorResponse) {
